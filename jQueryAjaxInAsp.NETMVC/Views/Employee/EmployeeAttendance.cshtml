@@ -1,0 +1,54 @@
+﻿@model IEnumerable<jQueryAjaxInAsp.NETMVC.Models.ViewModel.AttendanceModel>
+
+@{
+    ViewBag.Title = "EmployeeAttendance";
+    Layout = null;
+}
+
+
+<h2>Attendance record for : @ViewBag.currentEmployeeName</h2>
+
+<p>
+    <a class="btn btn-primary btn-sm" onclick="Edit('@Url.Action("CreateAttendance", "Employee", new { id=ViewBag.currentEmployeeid})')">Add login time</a>
+   
+</p>
+<table class="table table-striped table-condensed" id="AttendanceTable">
+    <thead>
+        <tr>
+
+            <th class="text-primary">
+                @Html.DisplayNameFor(model => model.AttendanceInTime)
+            </th>
+            <th class="text-primary">
+                @Html.DisplayNameFor(model => model.AttendanceOutTime)
+            </th>
+            <th class="text-primary">
+                @Html.DisplayNameFor(model => model.TotalTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceInTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceOutTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalTime)
+            </td>
+            <td>
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+

@@ -1,0 +1,150 @@
+﻿@model jQueryAjaxInAsp.NETMVC.Models.ViewModel.UserModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login-div {
+            position: absolute;
+            left: 35%;
+            top: 25%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+        .field-validation-error {
+            color:red;
+        }
+        .mainpage {
+            background-image: url(../../AppFiles/Images/employeeimage.png);
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .login-box, .register-box {
+            width: 360px;
+            margin: 14% auto;
+        }
+        .login-logo, .register-logo {
+            font-size: 35px;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+            .login-logo a, .register-logo a {
+                color: #444;
+            }
+        .login-box-body, .register-box-body {
+            background: #fff;
+            padding: 20px;
+            border-top: 0;
+            color: #666;
+        }
+        .login-box-msg, .register-box-msg {
+            margin: 0;
+            text-align: center;
+            padding: 0 20px 20px 20px;
+        }
+        .has-feedback {
+            position: relative;
+        }
+            .has-feedback .form-control {
+                padding-right: 42.5px;
+            }
+    </style>
+</head>
+<body class="mainpage">
+    @*<div id="login-div" class="jumbotron">
+            @using (Html.BeginForm("Autherize", "Login",FormMethod.Post))
+            {
+                <table>
+                    <tr>
+                        <td></td>
+                        <td style="text-decoration:underline">Admin/Employee</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => model.UserName)
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.UserName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.UserName)</td>
+                    </tr>
+
+                    <tr>
+                        <td>@Html.LabelFor(model => model.Password)</td>
+                        <td>@Html.EditorFor(model => model.Password)</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>@Html.ValidationMessageFor(model => model.Password)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="name" value="Login" class="btn-success" />
+                            <input type="reset" name="name" value="Clear" class="btn-primary"/>
+                        </td>
+                    </tr>
+                </table>
+            }
+
+        </div>*@
+
+    <div class="login-box">
+        <div class="login-logo">
+            @*<a href="#"><b>Employee</b>Managment</a>*@
+        </div>
+
+        <div class="login-box-body">
+            <p style="text-align:center; font-size:24px;"><b>Employee Managment</p>
+            <p class="login-box-msg">Sign in to start your session</p>
+            @using (Html.BeginForm("Autherize", "Login", FormMethod.Post))
+            {
+        <div class="form-group has-feedback">
+            @*<input type="email" class="form-control" placeholder="Email">*@
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @Placeholder = "User Name" })
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+                        <div class="form-group has-feedback">
+                            @*<input type="password" class="form-control" placeholder="Password">*@
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @Placeholder = "Password" })
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-8">
+                                                <div class="checkbox icheck">
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-xs-4">
+                                                <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                                            </div>
+
+                                        </div>            }
+        </div>
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

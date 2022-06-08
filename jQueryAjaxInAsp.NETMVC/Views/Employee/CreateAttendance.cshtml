@@ -1,0 +1,68 @@
+﻿@model jQueryAjaxInAsp.NETMVC.Models.ViewModel.AttendanceModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateAttendance</title>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+            $('#datetimepicker2').datetimepicker();
+        });
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm("CreateAttendance", "Employee", FormMethod.Post, new { enctype = "multipart/form-data", onSubmit = "return jQueryAjaxPost(this);", data_restUrl = Url.Action("CreateAttendance", "Employee", new { id = Model.Employeeid }) }))//data-resetUrl
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>@Html.DisplayFor(x => x.EmployeeName)</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            @Html.HiddenFor(model => model.Employeeid, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AttendanceInTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   
+                        @Html.TextBoxFor(model => model.AttendanceInTime,  new { @class = "form-control", id = "datetimepicker1" } )
+                    
+                       
+                            @Html.ValidationMessageFor(model => model.AttendanceInTime, "", new { @class = "text-danger" })
+                    
+                    </div>
+                </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AttendanceOutTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.AttendanceOutTime, new { @class = "form-control", id = "datetimepicker2" } )
+                    @Html.ValidationMessageFor(model => model.AttendanceOutTime, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        
+    </div>
+</body>
+</html>
